@@ -1,0 +1,323 @@
+/* ================================ CSS VARIABLES & RESET ================================ */
+
+:root {
+  /* Color Palette - Elegant museum theme */
+  --color-primary: #8b4513;
+  --color-primary-light: #a0522d;
+  --color-primary-dark: #654321;
+
+  --color-accent: #d4af37;
+  --color-accent-light: #f4d03f;
+
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-light: #7a7a7a;
+
+  --color-bg-primary: #fdfbf7;
+  --color-bg-secondary: #f5f1e8;
+  --color-bg-dark: #2c2416;
+
+  --color-border: #e5dcc5;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-display: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  margin: 0;
+  height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ================================ LAYOUT ================================ */
+
+.layout {
+  z-index: 1;
+}
+
+.layout .content {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout .footer {
+  text-align: center;
+  margin-top: auto;
+  padding: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+/* ================================ SIDEBAR STYLING - MUSEUM THEME ================================ */
+
+.sidebar {
+  color: var(--color-text-secondary);
+  overflow-x: hidden !important;
+  position: relative;
+  background: var(--color-bg-secondary);
+  border-right: 2px solid var(--color-border);
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--color-bg-secondary);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--color-primary-light);
+}
+
+.sidebar .sidebar-layout {
+  height: auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-bg-secondary);
+  z-index: 2;
+}
+
+/* SIDEBAR HEADER */
+.sidebar .sidebar-layout .sidebar-header {
+  height: 100px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-sm);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.sidebar .museum-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.sidebar .museum-logo .logo-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 28px;
+  transition: var(--transition-base);
+}
+
+.sidebar .museum-logo .logo-text {
+  width: 180px;
+  transition: opacity var(--transition-base);
+}
+
+/* SIDEBAR CONTENT */
+.sidebar .sidebar-layout .sidebar-content {
+  flex-grow: 1;
+  padding: var(--spacing-md) 0;
+}
+
+/* MENU STYLING */
+.sidebar .menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .menu .menu-item a {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 var(--spacing-sm);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.sidebar .menu .menu-item a:hover {
+  background: var(--color-bg-primary);
+  color: var(--color-primary-light);
+}
+
+.sidebar .menu .menu-item a:hover::before {
+  height: 70%;
+}
+
+.sidebar .menu .menu-item.active a {
+  background: var(--color-primary-light);
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.sidebar .menu .menu-item.active a::before {
+  height: 70%;
+}
+
+.sidebar .menu .menu-item a .menu-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-xs);
+  color: var(--color-primary);
+  transition: var(--transition-base);
+}
+
+.sidebar .menu .menu-item.menu-item.active a .menu-icon {
+  color: var(--color-white);
+}
+
+.sidebar .menu .menu-item a .menu-title {
+  font-size: 1rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+  transition: var(--transition-base);
+}
+
+/* COLLAPSE BUTTON */
+.sidebar-collapser {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: left var(--transition-base);
+  transition: all var(--transition-base);
+}
+
+.sidebar-collapser:hover {
+  background-color: var(--color-primary-light);
+  transform: translateX(-20%) scale(1.05);
+}
+
+/* COLLAPSED STATE */
+.sidebar.collapsed .museum-logo .logo-text {
+  opacity: 0;
+}
+
+.sidebar.collapsed ~ .layout .sidebar-collapser {
+  transform: rotate(180deg);
+}
+
+.sidebar.collapsed .menu .menu-item a .menu-title {
+  opacity: 0;
+}
+
+/* MOBILE TOGGLE BUTTON */
+.sidebar-toggler {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  transition: var(--transition-base);
+}
+
+.sidebar-toggler:hover {
+  background: var(--color-primary-light);
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #btn-collapse {
+    display: none;
+  }
+
+  .sidebar .sidebar-collapser {
+    display: none;
+  }
+}
+
+/* Main Content */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-header .page-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.page-header .page-icon {
+  font-size: 2rem;
+  color: var(--color-primary-dark);
+}

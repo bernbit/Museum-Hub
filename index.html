@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Museum Hub</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/Logomark.svg" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="layout has-sidebar fixed-sidebar fixed-header">
+      <!-- SIDEBAR -->
+      <aside id="sidebar" class="sidebar break-point-sm">
+        <div class="sidebar-layout">
+          <!-- SIDEBAR HEADER -->
+          <div class="sidebar-header">
+            <div class="museum-logo">
+              <img
+                src="./assets/Logomark.svg"
+                alt="Logomark"
+                class="logo-icon"
+              />
+
+              <img src="./assets/Wormark.svg" alt="" class="logo-text" />
+            </div>
+          </div>
+
+          <!-- SIDEBAR CONTENT -->
+          <div class="sidebar-content">
+            <nav class="menu">
+              <ul>
+                <li class="menu-item active">
+                  <a href="#">
+                    <span class="material-symbols-outlined menu-icon">
+                      image
+                    </span>
+                    <span class="menu-title">Gallery</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#">
+                    <span class="material-symbols-outlined menu-icon">
+                      map
+                    </span>
+                    <span class="menu-title">Maps</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#">
+                    <span class="material-symbols-outlined menu-icon">
+                      favorite
+                    </span>
+                    <span class="menu-title">Favorites</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#">
+                    <span class="material-symbols-outlined menu-icon">
+                      info
+                    </span>
+                    <span class="menu-title">About</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#">
+                    <span class="material-symbols-outlined menu-icon">
+                      help_center
+                    </span>
+                    <span class="menu-title">Help</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#">
+                    <span class="material-symbols-outlined menu-icon">
+                      contact_page
+                    </span>
+                    <span class="menu-title">Contact</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </aside>
+
+      <!-- OVERLAY FOR MOBILE -->
+      <div id="overlay" class="overlay"></div>
+
+      <!-- MAIN CONTENT -->
+      <div class="layout">
+        <main class="content">
+          <!-- Mobile Toggle Button -->
+          <button
+            id="btn-toggle"
+            href="#"
+            class="sidebar-toggler break-point-sm"
+          >
+            <span class="material-symbols-outlined menu-icon"> menu </span>
+          </button>
+
+          <div class="page-header">
+            <!-- Collapse Button -->
+            <button id="btn-collapse" class="sidebar-collapser">
+              <span class="material-symbols-outlined">
+                keyboard_arrow_left
+              </span>
+            </button>
+
+            <p class="page-title">Gallery</p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
