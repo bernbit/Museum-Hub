@@ -1,4 +1,4 @@
-//* Sidebar Script
+//* ===== SIDEBAR ANIMATION =====
 const ANIMATION_DURATION = 300;
 const SIDEBAR_EL = document.getElementById("sidebar");
 
@@ -20,12 +20,20 @@ document.getElementById("overlay").addEventListener("click", () => {
 
 // Active menu item handling
 const menuItems = document.querySelectorAll(".menu-item a");
+
 menuItems.forEach((item) => {
   item.addEventListener("click", function (e) {
-    e.preventDefault();
+    const href = this.getAttribute("href");
+
+    // Only prevent default for placeholder links
+    if (href === "#") {
+      e.preventDefault();
+    }
+
     document
       .querySelectorAll(".menu-item")
       .forEach((mi) => mi.classList.remove("active"));
+
     this.parentElement.classList.add("active");
   });
 });

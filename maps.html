@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Museum Hub</title>
+    <title>Museum Hub - Maps</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
@@ -24,6 +24,10 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="assets/Logomark.svg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
   </head>
   <body>
     <div class="layout has-sidebar fixed-sidebar fixed-header">
@@ -47,7 +51,7 @@
           <div class="sidebar-content">
             <nav class="menu">
               <ul>
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="./">
                     <span class="material-symbols-outlined menu-icon">
                       image
@@ -55,7 +59,7 @@
                     <span class="menu-title">Gallery</span>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="./maps.html">
                     <span class="material-symbols-outlined menu-icon">
                       map
@@ -64,7 +68,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="favorite.html">
+                  <a href="./favorite.html">
                     <span class="material-symbols-outlined menu-icon">
                       favorite
                     </span>
@@ -79,7 +83,7 @@
                     <span class="menu-title">About</span>
                   </a>
                 </li>
-                <!-- <li class="menu-item">
+                <li class="menu-item">
                   <a href="#">
                     <span class="material-symbols-outlined menu-icon">
                       help_center
@@ -94,7 +98,7 @@
                     </span>
                     <span class="menu-title">Contact</span>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </nav>
           </div>
@@ -124,63 +128,57 @@
               </span>
             </button>
 
-            <p class="page-title">Gallery</p>
+            <p class="page-title">Maps</p>
           </div>
 
-          <!-- Gallery Page -->
-          <!-- Gallery Filters -->
-          <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="ancient">
-              Ancient Eras
-            </button>
-            <button class="filter-btn" data-filter="fantasy">
-              Fantasy Artifacts
-            </button>
-            <button class="filter-btn" data-filter="legendary">
-              Legendary Creatures
-            </button>
-            <button class="filter-btn" data-filter="enchanted">
-              Enchanted Objects
-            </button>
-          </div>
+          <!-- Maps Page -->
+          <!-- Maps Page Content -->
+          <div class="maps-container">
+            <div id="locationDisplay"></div>
 
-          <!-- Gallery Grid -->
-          <div class="page-content gallery-page">
-            <div id="galleryGrid" class="gallery-grid">
-              <!-- Gallery items will be inserted here -->
-            </div>
+            <div class="maps-layout">
+              <!-- Sidebar with museum list -->
+              <aside class="maps-sidebar">
+                <h2>Nearby Museums</h2>
+                <div id="museumList">
+                  <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading nearby museums...</p>
+                  </div>
+                </div>
+              </aside>
 
-            <!-- Load More Button -->
-            <div
-              class="load-more-container"
-              id="loadMoreContainer"
-              style="display: none"
-            >
-              <button class="load-more-btn" id="loadMoreBtn">Load More</button>
+              <!-- Map Container -->
+              <div class="map-container">
+                <div class="view-toggle">
+                  <button class="toggle-btn active" data-view="map">
+                    <span class="material-symbols-outlined">map</span>
+                    Map View
+                  </button>
+                  <button class="toggle-btn" data-view="street">
+                    <span class="material-symbols-outlined">streetview</span>
+                    Street View
+                  </button>
+                </div>
+                <div id="map"></div>
+                <div id="streetview"></div>
+
+                <div class="info-panel" id="infoPanel">
+                  <button class="info-close" onclick="closeInfoPanel()">
+                    ✕
+                  </button>
+                  <div class="info-content" id="infoContent"></div>
+                </div>
+              </div>
             </div>
           </div>
         </main>
       </div>
     </div>
 
-    <!-- Modal for Artwork Details -->
-    <div id="artworkModal" class="modal">
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-        <img id="modalImage" class="modal-image" src="" alt="" />
-        <div class="modal-info">
-          <h2 id="modalTitle" class="modal-title"></h2>
-          <p id="modalArtist" class="modal-artist"></p>
-          <div id="modalDetails" class="modal-details"></div>
-        </div>
-      </div>
-    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="./js/sidebar.js"></script>
-    <script src="./js/gallery.js"></script>
+    <script src="./js/maps.js"></script>
   </body>
 </html>

@@ -47,7 +47,7 @@
           <div class="sidebar-content">
             <nav class="menu">
               <ul>
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="./">
                     <span class="material-symbols-outlined menu-icon">
                       image
@@ -63,8 +63,8 @@
                     <span class="menu-title">Maps</span>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="favorite.html">
+                <li class="menu-item active">
+                  <a href="./favorite.html">
                     <span class="material-symbols-outlined menu-icon">
                       favorite
                     </span>
@@ -79,7 +79,7 @@
                     <span class="menu-title">About</span>
                   </a>
                 </li>
-                <!-- <li class="menu-item">
+                <li class="menu-item">
                   <a href="#">
                     <span class="material-symbols-outlined menu-icon">
                       help_center
@@ -94,7 +94,7 @@
                     </span>
                     <span class="menu-title">Contact</span>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </nav>
           </div>
@@ -124,40 +124,34 @@
               </span>
             </button>
 
-            <p class="page-title">Gallery</p>
+            <p class="page-title">Favorites</p>
           </div>
 
-          <!-- Gallery Page -->
-          <!-- Gallery Filters -->
-          <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="ancient">
-              Ancient Eras
-            </button>
-            <button class="filter-btn" data-filter="fantasy">
-              Fantasy Artifacts
-            </button>
-            <button class="filter-btn" data-filter="legendary">
-              Legendary Creatures
-            </button>
-            <button class="filter-btn" data-filter="enchanted">
-              Enchanted Objects
+          <!-- Favorites Page -->
+          <!-- Favorites Stats -->
+          <div
+            class="favorites-stats"
+            id="favoritesStats"
+            style="display: none"
+          >
+            <div class="stats-item">
+              <div class="stats-icon">
+                <span class="material-symbols-outlined">favorite</span>
+              </div>
+              <div class="stats-info">
+                <h3 id="favoritesCount">0</h3>
+                <p>Favorite Artworks</p>
+              </div>
+            </div>
+            <button class="clear-all-btn" onclick="confirmClearAll()">
+              Clear All Favorites
             </button>
           </div>
 
           <!-- Gallery Grid -->
-          <div class="page-content gallery-page">
-            <div id="galleryGrid" class="gallery-grid">
-              <!-- Gallery items will be inserted here -->
-            </div>
-
-            <!-- Load More Button -->
-            <div
-              class="load-more-container"
-              id="loadMoreContainer"
-              style="display: none"
-            >
-              <button class="load-more-btn" id="loadMoreBtn">Load More</button>
+          <div class="page-content favorites-page">
+            <div id="favoritesGrid" class="gallery-grid">
+              <!-- Favorites will be inserted here -->
             </div>
           </div>
         </main>
@@ -179,8 +173,26 @@
       </div>
     </div>
 
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="confirm-modal">
+      <div class="confirm-content">
+        <h3>Clear All Favorites?</h3>
+        <p>
+          This will remove all artworks from your favorites. This action cannot
+          be undone.
+        </p>
+        <div class="confirm-buttons">
+          <button class="confirm-btn cancel" onclick="closeConfirmModal()">
+            Cancel
+          </button>
+          <button class="confirm-btn confirm" onclick="clearAllFavorites()">
+            Clear All
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="./js/sidebar.js"></script>
-    <script src="./js/gallery.js"></script>
+    <script src="./js/favorites.js"></script>
   </body>
 </html>

@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Museum Hub - About</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      /* ================================ CSS VARIABLES & RESET ================================ */
+
+      :root {
+        /* Color Palette - Elegant museum theme */
+        --color-primary: #8b4513;
+        --color-primary-light: #a0522d;
+        --color-primary-dark: #654321;
+
+        --color-accent: #d4af37;
+        --color-accent-light: #f4d03f;
+
+        --color-text-primary: #1a1a1a;
+        --color-text-secondary: #4a4a4a;
+        --color-text-light: #7a7a7a;
+
+        --color-bg-primary: #fdfbf7;
+        --color-bg-secondary: #f5f1e8;
+        --color-bg-dark: #2c2416;
+
+        --color-border: #e5dcc5;
+        --color-white: #ffffff;
+
+        /* Typography */
+        --font-display: "Playfair Display", serif;
+        --font-body: "DM Sans", sans-serif;
+
+        /* Spacing */
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 2rem;
+        --spacing-lg: 4rem;
+        --spacing-xl: 6rem;
+
+        /* Shadows */
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+
+        /* Transitions */
+        --transition-fast: 0.2s ease;
+        --transition-base: 0.3s ease;
+        --transition-slow: 0.5s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--color-text-primary);
+        background: var(--color-bg-primary);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        margin: 0;
+        height: 100vh;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      /* ================================ LAYOUT ================================ */
+
+      .layout {
+        z-index: 1;
+      }
+
+      .layout .content {
+        padding: 20px 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* ================================ SIDEBAR STYLING ================================ */
+
+      .sidebar {
+        color: var(--color-text-secondary);
+        overflow-x: hidden !important;
+        position: relative;
+        background: var(--color-bg-secondary);
+        border-right: 2px solid var(--color-border);
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+        background-color: var(--color-bg-secondary);
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: var(--color-primary-light);
+      }
+
+      .sidebar .sidebar-layout {
+        height: auto;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background-color: var(--color-bg-secondary);
+        z-index: 2;
+      }
+
+      .sidebar .sidebar-layout .sidebar-header {
+        height: 100px;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        padding: 0 var(--spacing-sm);
+        border-bottom: 2px solid var(--color-border);
+      }
+
+      .sidebar .museum-logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+
+      .sidebar .museum-logo .logo-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 28px;
+        transition: var(--transition-base);
+      }
+
+      .sidebar .museum-logo .logo-text {
+        width: 180px;
+        transition: opacity var(--transition-base);
+      }
+
+      .sidebar .sidebar-layout .sidebar-content {
+        flex-grow: 1;
+        padding: var(--spacing-md) 0;
+      }
+
+      .sidebar .menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar .menu .menu-item a {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        padding: 0 var(--spacing-sm);
+        color: var(--color-text-secondary);
+        transition: all var(--transition-base);
+        position: relative;
+      }
+
+      .sidebar .menu .menu-item a:hover {
+        background: var(--color-bg-primary);
+        color: var(--color-primary-light);
+      }
+
+      .sidebar .menu .menu-item.active a {
+        background: var(--color-primary-light);
+        color: var(--color-white);
+        font-weight: 600;
+      }
+
+      .sidebar .menu .menu-item a .menu-icon {
+        font-size: 1.5rem;
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: var(--spacing-xs);
+        color: var(--color-primary);
+        transition: var(--transition-base);
+      }
+
+      .sidebar .menu .menu-item.active a .menu-icon {
+        color: var(--color-white);
+      }
+
+      .sidebar .menu .menu-item a .menu-title {
+        font-size: 1rem;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex-grow: 1;
+        transition: var(--transition-base);
+      }
+
+      .sidebar-collapser {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all var(--transition-base);
+      }
+
+      .sidebar-collapser:hover {
+        background-color: var(--color-primary-light);
+        transform: translateX(-20%) scale(1.05);
+      }
+
+      .sidebar.collapsed .museum-logo .logo-text {
+        opacity: 0;
+      }
+
+      .sidebar.collapsed ~ .layout .sidebar-collapser {
+        transform: rotate(180deg);
+      }
+
+      .sidebar.collapsed .menu .menu-item a .menu-title {
+        opacity: 0;
+      }
+
+      .sidebar-toggler {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        background: var(--color-primary);
+        color: var(--color-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-md);
+        z-index: 100;
+        transition: var(--transition-base);
+      }
+
+      .sidebar-toggler:hover {
+        background: var(--color-primary-light);
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        #btn-collapse {
+          display: none;
+        }
+
+        .sidebar .sidebar-collapser {
+          display: none;
+        }
+      }
+
+      /* ================================ PAGE HEADER ================================ */
+
+      .page-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .page-header .page-title {
+        font-family: var(--font-display);
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--color-primary-dark);
+      }
+
+      /* ================================ ABOUT PAGE ================================ */
+
+      .about-content {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      /* Hero Section */
+      .about-hero {
+        margin-bottom: var(--spacing-md);
+      }
+
+      .about-hero h1 {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        color: var(--color-primary-dark);
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .about-hero p {
+        font-size: 1.05rem;
+        color: var(--color-text-secondary);
+        line-height: 1.7;
+        max-width: 700px;
+      }
+
+      /* Section Divider */
+      .section {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .section h2 {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        color: var(--color-primary-dark);
+        margin-bottom: var(--spacing-sm);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--color-text-secondary);
+      }
+
+      /* Features Grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+      }
+
+      .feature-card {
+        background: var(--color-white);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: var(--spacing-sm);
+        display: flex;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        transition: all var(--transition-base);
+      }
+
+      .feature-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .feature-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        background: var(--color-bg-secondary);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        font-size: 24px;
+      }
+
+      .feature-content h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        margin-bottom: 4px;
+      }
+
+      .feature-content p {
+        color: var(--color-text-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      /* Stats Section */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: var(--spacing-sm);
+        background: var(--color-white);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+      }
+
+      .stat-icon {
+        font-size: 28px;
+        color: var(--color-primary);
+        margin-bottom: 4px;
+      }
+
+      .stat-number {
+        font-family: var(--font-display);
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--color-primary-dark);
+        margin-bottom: 2px;
+      }
+
+      .stat-label {
+        color: var(--color-text-secondary);
+        font-size: 0.85rem;
+      }
+
+      /* Values Grid */
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+      }
+
+      .value-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: var(--spacing-sm);
+        background: var(--color-white);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        transition: all var(--transition-base);
+      }
+
+      .value-item:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .value-icon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        background: var(--color-bg-secondary);
+        color: var(--color-primary);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+      }
+
+      .value-content h4 {
+        color: var(--color-text-primary);
+        margin-bottom: 4px;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .value-content p {
+        color: var(--color-text-light);
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: var(--color-bg-secondary);
+        border: 1px solid var(--color-border);
+        padding: var(--spacing-md);
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        color: var(--color-primary-dark);
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .cta-section p {
+        font-size: 0.95rem;
+        color: var(--color-text-secondary);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-btn {
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all var(--transition-base);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .cta-btn.primary {
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+
+      .cta-btn.primary:hover {
+        background: var(--color-primary-light);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .cta-btn.secondary {
+        background: var(--color-white);
+        color: var(--color-primary);
+        border: 1px solid var(--color-border);
+      }
+
+      .cta-btn.secondary:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .about-hero h1 {
+          font-size: 2rem;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout has-sidebar fixed-sidebar fixed-header">
+      <!-- SIDEBAR -->
+      <aside id="sidebar" class="sidebar break-point-sm">
+        <div class="sidebar-layout">
+          <!-- SIDEBAR HEADER -->
+          <div class="sidebar-header">
+            <div class="museum-logo">
+              <span
+                class="material-symbols-outlined logo-icon"
+                style="font-size: 45px"
+                >museum</span
+              >
+              <span
+                class="logo-text"
+                style="
+                  font-family: var(--font-display);
+                  font-size: 24px;
+                  font-weight: bold;
+                  color: var(--color-primary);
+                "
+                >MuseumHub</span
+              >
+            </div>
+          </div>
+
+          <!-- SIDEBAR CONTENT -->
+          <div class="sidebar-content">
+            <nav class="menu">
+              <ul>
+                <li class="menu-item">
+                  <a href="gallery.html">
+                    <span class="material-symbols-outlined menu-icon"
+                      >image</span
+                    >
+                    <span class="menu-title">Gallery</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="museum_finder_fixed.html">
+                    <span class="material-symbols-outlined menu-icon">map</span>
+                    <span class="menu-title">Maps</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="favorites.html">
+                    <span class="material-symbols-outlined menu-icon"
+                      >favorite</span
+                    >
+                    <span class="menu-title">Favorites</span>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="about.html">
+                    <span class="material-symbols-outlined menu-icon"
+                      >info</span
+                    >
+                    <span class="menu-title">About</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#help">
+                    <span class="material-symbols-outlined menu-icon"
+                      >help_center</span
+                    >
+                    <span class="menu-title">Help</span>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#contact">
+                    <span class="material-symbols-outlined menu-icon"
+                      >contact_page</span
+                    >
+                    <span class="menu-title">Contact</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </aside>
+
+      <!-- OVERLAY FOR MOBILE -->
+      <div id="overlay" class="overlay"></div>
+
+      <!-- MAIN CONTENT -->
+      <div class="layout">
+        <main class="content">
+          <!-- Mobile Toggle Button -->
+          <button id="btn-toggle" class="sidebar-toggler break-point-sm">
+            <span class="material-symbols-outlined menu-icon">menu</span>
+          </button>
+
+          <div class="page-header">
+            <!-- Collapse Button -->
+            <button id="btn-collapse" class="sidebar-collapser">
+              <span class="material-symbols-outlined">keyboard_arrow_left</span>
+            </button>
+
+            <span
+              class="material-symbols-outlined"
+              style="font-size: 2rem; color: var(--color-primary)"
+              >info</span
+            >
+            <p class="page-title">About Museum Hub</p>
+          </div>
+
+          <!-- About Content -->
+          <div class="about-content">
+            <!-- Hero Section -->
+            <section class="about-hero">
+              <h1>About Museum Hub</h1>
+              <p>
+                Discover the world's greatest artworks from the comfort of your
+                home. Museum Hub brings together collections from renowned
+                museums worldwide, making art and culture accessible to
+                everyone, everywhere.
+              </p>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="section">
+              <h2>
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size: 1.6rem"
+                  >lightbulb</span
+                >
+                Our Mission
+              </h2>
+              <p>
+                We believe art and culture should be accessible to everyone.
+                Museum Hub democratizes access to the world's most precious
+                artworks, providing a platform where anyone can explore, learn,
+                and be inspired by humanity's creative heritage.
+              </p>
+            </section>
+
+            <!-- Features Section -->
+            <section class="section">
+              <h2>
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size: 1.6rem"
+                  >star</span
+                >
+                What We Offer
+              </h2>
+              <div class="features-grid">
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <span class="material-symbols-outlined"
+                      >gallery_thumbnail</span
+                    >
+                  </div>
+                  <div class="feature-content">
+                    <h3>Curated Collections</h3>
+                    <p>
+                      Browse thousands of artworks from the Metropolitan Museum
+                      of Art.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <span class="material-symbols-outlined">favorite</span>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Personal Gallery</h3>
+                    <p>
+                      Save your favorite artworks and build your own collection.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <span class="material-symbols-outlined">map</span>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Museum Finder</h3>
+                    <p>Discover museums near you with our interactive map.</p>
+                  </div>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <span class="material-symbols-outlined">search</span>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Smart Search</h3>
+                    <p>Find artworks with category filters and search.</p>
+                  </div>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <span class="material-symbols-outlined">devices</span>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Multi-Platform</h3>
+                    <p>Access from any device with seamless syncing.</p>
+                  </div>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <span class="material-symbols-outlined">school</span>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Educational</h3>
+                    <p>Learn about art history and cultural movements.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section">
+              <h2>
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size: 1.6rem"
+                  >analytics</span
+                >
+                By the Numbers
+              </h2>
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <span class="material-symbols-outlined stat-icon">image</span>
+                  <div class="stat-number">470K+</div>
+                  <div class="stat-label">Artworks</div>
+                </div>
+
+                <div class="stat-item">
+                  <span class="material-symbols-outlined stat-icon"
+                    >museum</span
+                  >
+                  <div class="stat-number">5,000+</div>
+                  <div class="stat-label">Museums</div>
+                </div>
+
+                <div class="stat-item">
+                  <span class="material-symbols-outlined stat-icon"
+                    >public</span
+                  >
+                  <div class="stat-number">195</div>
+                  <div class="stat-label">Countries</div>
+                </div>
+
+                <div class="stat-item">
+                  <span class="material-symbols-outlined stat-icon"
+                    >history</span
+                  >
+                  <div class="stat-number">5,000</div>
+                  <div class="stat-label">Years</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="section">
+              <h2>
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size: 1.6rem"
+                  >workspace_premium</span
+                >
+                Our Values
+              </h2>
+              <div class="values-grid">
+                <div class="value-item">
+                  <div class="value-icon">
+                    <span class="material-symbols-outlined">lock_open</span>
+                  </div>
+                  <div class="value-content">
+                    <h4>Accessibility</h4>
+                    <p>Art should be free and accessible to everyone.</p>
+                  </div>
+                </div>
+
+                <div class="value-item">
+                  <div class="value-icon">
+                    <span class="material-symbols-outlined">verified</span>
+                  </div>
+                  <div class="value-content">
+                    <h4>Authenticity</h4>
+                    <p>Partnering with official museums for accuracy.</p>
+                  </div>
+                </div>
+
+                <div class="value-item">
+                  <div class="value-icon">
+                    <span class="material-symbols-outlined">diversity_3</span>
+                  </div>
+                  <div class="value-content">
+                    <h4>Diversity</h4>
+                    <p>Celebrating art from all cultures and eras.</p>
+                  </div>
+                </div>
+
+                <div class="value-item">
+                  <div class="value-icon">
+                    <span class="material-symbols-outlined">rocket_launch</span>
+                  </div>
+                  <div class="value-content">
+                    <h4>Innovation</h4>
+                    <p>Using technology for engaging experiences.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+              <h2>Start Exploring</h2>
+              <p>
+                Join thousands of art enthusiasts discovering the world's
+                greatest collections
+              </p>
+              <div class="cta-buttons">
+                <a href="gallery.html" class="cta-btn primary">
+                  <span class="material-symbols-outlined"
+                    >gallery_thumbnail</span
+                  >
+                  Browse Gallery
+                </a>
+                <a href="museum_finder_fixed.html" class="cta-btn secondary">
+                  <span class="material-symbols-outlined">map</span>
+                  Find Museums
+                </a>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      // ===== SIDEBAR SCRIPT =====
+      const SIDEBAR_EL = document.getElementById("sidebar");
+
+      document.getElementById("btn-collapse").addEventListener("click", () => {
+        SIDEBAR_EL.classList.toggle("collapsed");
+      });
+
+      document.getElementById("btn-toggle").addEventListener("click", (e) => {
+        e.preventDefault();
+        SIDEBAR_EL.classList.toggle("toggled");
+      });
+
+      document.getElementById("overlay").addEventListener("click", () => {
+        SIDEBAR_EL.classList.toggle("toggled");
+      });
+    </script>
+  </body>
+</html>
